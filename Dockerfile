@@ -1,8 +1,5 @@
 FROM python:3.10-slim
 
-RUN apt update && apt install -y mecab libmecab-dev mecab-ipadic-utf8 && \
-    pip install fastapi uvicorn fugashi
-
 WORKDIR /app
 
 COPY requirements.txt .
