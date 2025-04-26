@@ -11,11 +11,11 @@ class DifficultyResponse(BaseModel):
     difficulty: int
 
 @app.post("/predict-length", response_model=DifficultyResponse)
-def predict_difficulty(req: TextRequest):
+def predict_length_difficulty(req: TextRequest):
     score = estimate_difficulty(req.text)
     return {"difficulty": score}
 
 @app.post("/predict-freq", response_model=dict)
-def predict_difficulty(req: TextRequest):
+def predict_freq_difficulty(req: TextRequest):
     result = estimate_difficulty_with_wordfreq(req.text)
     return result
