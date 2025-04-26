@@ -1,5 +1,10 @@
 fastapi
+fugashi
+mecab-python3
+ipadic
+unidic-lite
 uvicorn[standard]
 pytest
 pydantic
 ruff
+wordfreq
