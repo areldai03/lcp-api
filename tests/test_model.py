@@ -1,10 +1,11 @@
 import pytest
 
-from app.model import RuleBasedEstimator, WordfreqBasedEstimator
+from app.model import RuleBasedEstimator, WordfreqBasedEstimator, EmbeddingBasedEstimator
 
 test_cases = [
     (RuleBasedEstimator, "これは簡単な文章です。"),
     (WordfreqBasedEstimator, "これは簡単な文章です。"),
+    (EmbeddingBasedEstimator, "これは簡単な文章です。"),
 ]
 
 @pytest.mark.parametrize("EstimatorClass,text", test_cases)
