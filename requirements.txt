@@ -1,5 +1,6 @@
 fastapi
 fugashi
+httpx
 mecab-python3
 ipadic
 unidic-lite
