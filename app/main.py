@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from app.model.rule_based import RuleBasedEstimator
-from app.model.wordfreq_based import WordfreqBasedEstimator
+from app.model import RuleBasedEstimator, WordfreqBasedEstimator
 
 app = FastAPI()
 
