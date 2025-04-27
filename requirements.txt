@@ -7,4 +7,7 @@ uvicorn[standard]
 pytest
 pydantic
 ruff
+sentencepiece
+transformers
+torch
 wordfreq

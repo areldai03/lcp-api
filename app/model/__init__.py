@@ -1,2 +1,3 @@
 from .rule_based import RuleBasedEstimator
 from .wordfreq_based import WordfreqBasedEstimator
+from .embedding_based import EmbeddingBasedEstimator

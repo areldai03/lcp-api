@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from app.model import RuleBasedEstimator, WordfreqBasedEstimator
+from app.model import RuleBasedEstimator, WordfreqBasedEstimator, EmbeddingBasedEstimator
 
 app = FastAPI()
 
@@ -11,8 +11,10 @@ class TextRequest(BaseModel):
 def predict_difficulty(req: TextRequest, method: str = Query("wordfreq")):
     if method == "rule":
         estimator = RuleBasedEstimator()
-    else:
+    elif method == "wordfreq":
         estimator = WordfreqBasedEstimator()
-
+    elif method == "embedding":
+        estimator = EmbeddingBasedEstimator()
+    
     result = estimator.estimate(req.text)
     return result
