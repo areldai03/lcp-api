@@ -1,21 +1,19 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from app.model import estimate_difficulty, estimate_difficulty_with_wordfreq
+from app.model.rule_based import RuleBasedEstimator
+from app.model.wordfreq_based import WordfreqBasedEstimator
 
 app = FastAPI()
 
 class TextRequest(BaseModel):
     text: str
 
-class DifficultyResponse(BaseModel):
-    difficulty: int
+@app.post("/predict")
+def predict_difficulty(req: TextRequest, method: str = Query("wordfreq")):
+    if method == "rule":
+        estimator = RuleBasedEstimator()
+    else:
+        estimator = WordfreqBasedEstimator()
 
-@app.post("/predict-length", response_model=DifficultyResponse)
-def predict_length_difficulty(req: TextRequest):
-    score = estimate_difficulty(req.text)
-    return {"difficulty": score}
-
-@app.post("/predict-freq", response_model=dict)
-def predict_freq_difficulty(req: TextRequest):
-    result = estimate_difficulty_with_wordfreq(req.text)
+    result = estimator.estimate(req.text)
     return result
