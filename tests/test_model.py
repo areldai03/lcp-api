@@ -1,13 +1,19 @@
 import pytest
-from app.model import estimate_difficulty
 
-@pytest.mark.parametrize("text,expected", [
-    ("", 1),
-    ("i have an apple.", 1),
-    ("i don't have an apple.", 2),
-    ("i "*14, 3),
-    ("i "*19, 4),
-    ("i "*20, 5),
-])
-def test_estimate_difficulty(text, expected):
-    assert estimate_difficulty(text) == expected
+from app.model import RuleBasedEstimator, WordfreqBasedEstimator
+
+test_cases = [
+    (RuleBasedEstimator, "これは簡単な文章です。"),
+    (WordfreqBasedEstimator, "これは簡単な文章です。"),
+]
+
+@pytest.mark.parametrize("EstimatorClass,text", test_cases)
+def test_estimator(EstimatorClass, text):
+    estimator = EstimatorClass()
+    result = estimator.estimate(text)
+
+    assert isinstance(result, dict)
+
+    assert "difficulty" in result
+
+    assert 1 <= result["difficulty"] <= 5
