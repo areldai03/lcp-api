@@ -7,7 +7,7 @@
   
 ## 概要  
   
-LCP-API（Language Complexity Predictor API）は、日本語テキストの難易度を自動的に推定するためのRESTful APIサービスです。複数の推定アルゴリズムを提供し、テキストの複雑さを1〜5のスケールで評価します。  
+LCP-API（Language Complexity Predictor API）は、日本語テキストの難易度を自動的に推定するためのRESTful APIサービスです。複数の推定アルゴリズムを提供し、テキストの複雑さを1〜5のスケールで評価します。
   
 ## 特徴  
   
@@ -53,8 +53,19 @@ docker compose up
 ```
 
 ## 使用方法
+CLI
 ```bash
 # デフォルトの推定方法（wordfreq）を使用 [rule, wordfreq, embedding]
 curl -X POST "http://localhost:8000/predict?method=wordfreq" \  
      -H "Content-Type: application/json" \  
      -d '{"text": "これは難易度を推定するためのテキストです。"}'
+```
+GUI
+```bash
+# 下記にアクセス
+http://localhost:3000/predict
+```
+
+## あとがき
+CIの練習でAPIを作ってみました。中身は適当で時間があれば、分類層訓練して配置したい。
+久しぶりにreact/nextでフロントエンドも書いた。
