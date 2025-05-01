@@ -30,9 +30,11 @@ jobs:
       run: echo "PYTHONPATH=$GITHUB_WORKSPACE/backend" >> $GITHUB_ENV
 
     - name: Lint with ruff
-      cd backend
-      run: ruff check app tests
+      run: |
+        cd backend
+        ruff check app tests
 
     - name: Run tests with pytest
-      cd backend
-      run: pytest
+      run: |
+        cd backend
+        pytest
