@@ -1,4 +1,4 @@
-# LCP-API: テキスト難易度推定API  
+# LCP-API: 難易度推定API  
   
 ![LCP-API](https://img.shields.io/badge/LCP--API-v1.0-blue)  
 ![Python](https://img.shields.io/badge/Python-3.10-green)  
@@ -7,7 +7,7 @@
   
 ## 概要  
   
-LCP-API（Language Complexity Predictor API）は、日本語テキストの難易度を自動的に推定するためのRESTful APIサービスです。複数の推定アルゴリズムを提供し、テキストの複雑さを1〜5のスケールで評価します。
+LCP-API（Lexical Complexity Predictor API）は、難易度を自動的に推定するためのRESTful APIサービスです。複数の推定アルゴリズムを提供し、テキストの複雑さを1〜5のスケールで評価します。
   
 ## 特徴  
   
